@@ -5,6 +5,7 @@ import NewProduct from "./pages/NewProduct";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import "./App.css";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
