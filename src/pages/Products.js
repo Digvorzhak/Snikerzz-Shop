@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./Products.module.css";
+import { Link } from "react-router-dom";
 
 const ProductsPage = () => {
   const [data, setData] = useState([]);
@@ -21,13 +22,15 @@ const ProductsPage = () => {
   return (
     <div className={classes.products}>
       {data.map((sneaker) => (
-        <div className={classes.item}>
-          <h3 key={sneaker.id}>
-            {sneaker.brand} {sneaker.title}
-          </h3>
-          <h4>Price: {sneaker.retailPrice}$</h4>
-          <img className={classes.img} src={sneaker.media.smallImageUrl}></img>
-        </div>
+        <Link to={`/edit-product/${sneaker.id}`}>
+          <div className={classes.item}>
+            <h3 key={sneaker.id}>
+              {sneaker.brand} {sneaker.title}
+            </h3>
+            <h4>Price: {sneaker.retailPrice}$</h4>
+            <img className={classes.img} src={sneaker.mediaImg || sneaker.media?.smallImageUrl}></img>
+          </div>
+        </Link>
       ))}
     </div>
   );
